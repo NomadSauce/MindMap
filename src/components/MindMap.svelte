@@ -1,7 +1,8 @@
 <script>
     import Graph from "./Graph.svelte";
     import SideBar from "./SideBar.svelte";
-    import { nodeStore } from '../stores/store'
+    import DecisionTree from "./DecisionTree.svelte";
+    import { nodeStore, nodeStore2 } from '../stores/store'
 
 </script>
 
@@ -13,6 +14,7 @@
         <SideBar data={$nodeStore} />
     </div>
     <div class="col-9">
+        <DecisionTree data={$nodeStore2} />
         <Graph data={$nodeStore} />
     </div>
 
