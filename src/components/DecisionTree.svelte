@@ -20,7 +20,7 @@
     }
 
     function hasChildren(node) {
-        return node.children.length > 0
+        return node.children
     }
 </script>
 
@@ -44,25 +44,28 @@
         r=10
         stroke='red'
         fill='red'
-
     />
 </g>
 
 <g>
     <rect
-        x={middle - (rootC.length/2)*100}
-        y={levelLen - top/2}
-        rx=10
-        height=50
-        width={rootC.length * 100}
-        stroke='red'
-        fill='rgba(204, 36, 36, 0.25)'
-    />
+    x={middle - (rootC.length/2)*100}
+    y={levelLen - top/2}
+    rx=10
+    height=50
+    width={rootC.length * 100}
+    stroke='red'
+    fill='rgba(204, 36, 36, 0.25)'
+/> 
     
 </g>
 
 {#each rootC as node, i }
+    {#if !node.children}
+        
+    {/if}
     <g class="node">
+        
         <line
             x1={middle}
             y1=50
@@ -77,7 +80,7 @@
                 cx={(middle - (rootC.length/2) * 100) + (i)*100 + 50 }
                 cy={levelLen}
                 r=10
-                fill={(hasChildren(node)) ? 'red' : 'green'}
+                fill={(!node.children) ? 'red' : 'green'}
             />
     
     </g>

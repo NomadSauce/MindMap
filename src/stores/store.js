@@ -33,38 +33,13 @@ export const nodeStore = writable(
 )
 
 export const nodeStore2 = writable(
-    {
-        name: 'Root', 
-        children: [
-            {
-                name: 'B-1',
-                children: [
-                    {
-                        name: 'SB-1',
-                        children: []
-                    },
-                    {
-                        name: 'SB-2',
-                        children: []
-                    }
-                ]
-            },
-            {
-                name: 'B-2',
-                children: []
-            },
-            {
-                name: 'B-2',
-                children: []
-            },
-            {
-                name: 'B-2',
-                children: []
-            },
-            
-            
-        ]
-    }
+    [
+        {
+            id: 0,
+            name: '',
+            parent: ''
+        }
+    ]
 )
 
 

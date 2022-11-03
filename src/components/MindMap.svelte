@@ -11,11 +11,11 @@
 <div class="col-12 border h-100 row">
 
     <div class="col-3 sidebar">
-        <SideBar data={$nodeStore} />
+        <SideBar data={$nodeStore2} />
     </div>
     <div class="col-9">
-        <DecisionTree data={$nodeStore2} />
-        <Graph data={$nodeStore} />
+        <!-- <DecisionTree data={$nodeStore2} /> -->
+        <!-- <Graph data={$nodeStore} /> -->
     </div>
 
 </div>
