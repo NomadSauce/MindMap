@@ -57,6 +57,10 @@ export const nodeStore2 = writable(
                 name: 'B-2',
                 children: []
             },
+            {
+                name: 'B-2',
+                children: []
+            },
             
             
         ]
