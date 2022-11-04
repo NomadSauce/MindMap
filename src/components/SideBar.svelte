@@ -1,13 +1,15 @@
 <script>
     import { stratify } from 'd3-hierarchy'
+    import App from '../App.svelte';
     import Item from './Item.svelte';
     export let data
     $: items = data
     $: tree = stratify().parentId((d) => d.parent)(items)
 
 
+
     function addItem(e) {
-        console.log('Add Child', e)
+        console.log('SideBar: Add Child', e)
         items = [
             ...items, 
             {
@@ -18,8 +20,8 @@
         ]
 
     }
-
     function deleteItem(e) {
+        console.log('Sidebar: Delete Item', e)
         items = items.filter((d) => d.id !== e.detail.id)
     }
 </script>
@@ -36,9 +38,24 @@
         on:addItem={addItem}
         on:deleteItem={deleteItem} 
     />
+
+    <!-- <ul>
+        {#each trees as branch}
+            <li>
+                {JSON.stringify(branch)}
+
+            </li>
+        {/each}
+    </ul> -->
     <ul>
         {#each items as item }
-            <li>{JSON.stringify(item)}</li>
+            <div class="row border">
+                <li>{item.id}</li>
+                <li>{item.name}</li>
+                <li>{item.parent}</li>
+
+
+            </div>
         {/each}
     </ul>
 

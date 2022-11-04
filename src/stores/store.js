@@ -2,34 +2,27 @@ import { writable, Writable } from "svelte/store";
 
 export const nodeStore = writable(
     {
-        nodes: [
-            {
-                id: 'A',
-                label: 'Root'
+        name: "A",
+        children: [
+          { name: "D" },
+          { 
+            name: "C", 
+            children: [
+                { 
+                    name: "F",
+                    children: [
+                        {
+                            name: 'L',
+                            value: 'Test'
+                        }
+                    ]
+                }, 
+                { name: "E" }
+                ] 
             },
-            {
-                id: 'B',
-                label: 'Node-1'
-            },
-            {
-                id: 'C',
-                label: 'Node-2'
-            }
+          { name: "B" },
         ],
-        links: [
-            {
-                start: 'A',
-                target: 'B',
-                weight: 10
-            },
-            {
-                start: 'A',
-                target: 'C',
-                weight: 15
-
-            }
-        ]
-    }
+      }
 )
 
 export const nodeStore2 = writable(
@@ -37,7 +30,7 @@ export const nodeStore2 = writable(
         {
             id: 0,
             name: '',
-            parent: ''
+            parent: '',
         }
     ]
 )

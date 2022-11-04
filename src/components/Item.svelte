@@ -8,6 +8,8 @@
     const dispatch = createEventDispatcher()
 
     const addSibling = (e) => {
+        console.log('Item: AddSibling', e)
+
         dispatch('addItem', {
             id: Math.random(),
             name: '',
@@ -16,6 +18,8 @@
     }
 
     const addItem = (e) => {
+        console.log('Item: AddItem', e)
+
         dispatch('addItem', {
             id: Math.random(),
             name: '',
@@ -24,14 +28,19 @@
     }
 
     const bubbleUpAdd = (e) => {
+        console.log('Item:bubbleUpAdd', e)
+
         dispatch('addItem', e.detail)
     }
 
     const deleteItem = (e) => {
+        console.log('Item: Delete Item', e, node.children)
+
         dispatch('deleteItem', { id: node.data.id })
     }
 
     const bubbleUpDelete = (e) => {
+        console.log('Item: bubbleUpDelete', e)
         dispatch('deleteItime', e.detail)
     }
 
