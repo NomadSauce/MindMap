@@ -4,24 +4,18 @@
     import { nodeStore } from '../stores/store';
     import Node from './Node.svelte';
     export let data
-    $: nodes = $nodeStore
-    $: display = ''
     $: nodeData = []
     $: grandparents = []
     $: descendants = []
 
 
     onMount(() => {
-       while (!nodes) {
-
+       while (!$nodeStore) {
        }
-       console.log('Nodes', nodes)
-    //    children=nodes.children
-    //    grandparents=nodes.ancestors()
-    //    console.log('Children', grandparents)
+       console.log('Nodes', $nodeStore)
     })
 
-    $: children = nodes.children
+    $: children = $nodeStore.children
     console.log('Children', children)
 
     let height = 400
@@ -32,7 +26,7 @@
 
     
 
-    $: root = hierarchy(nodes).sort(
+    let root = hierarchy($nodeStore).sort(
         (a, b) => b.height - a.height || a.data.name.localeCompare(b.data.name)
     )
 
@@ -42,7 +36,7 @@
 
     function handleHover(dat) {
         console.log('')
-        // console.log('Nodes:', nodes)
+        // console.log('Nodes:', $nodeStore)
         nodeData = dat.data
         children = dat.children
         grandparents = dat.ancestors()
@@ -53,7 +47,7 @@
         // console.log('Children', children)
         console.log('Descendants', descendants)
         // console.log('Ancestors', grandparents)
-        // console.log('OGNodes', nodes)
+        // console.log('OGNodes', $nodeStore)
 
 
     }
@@ -71,12 +65,6 @@
             }
         ]
         children = d.children
-
-        // console.log('Kids',children)
-
-
-
-
     }
 </script>
 <!-- {treeX.links()} -->

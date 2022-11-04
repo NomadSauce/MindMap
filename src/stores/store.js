@@ -25,6 +25,54 @@ export const nodeStore = writable(
       }
 )
 
+export const trelloStore = writable(
+    [
+        {
+            title: 'Todo',
+            todos: [
+                {
+                    title: 'Trello clone',
+                    status: 'Todo',
+                    subList: []
+                },
+                {
+                    title: 'Trello clone',
+                    status: 'Todo',
+                    subList: []
+                },
+                {
+                    title: 'Trello clone',
+                    status: 'Todo',
+                    subList: []
+                }
+            ]
+        },
+        {
+            title: 'In-Progress',
+            todos: [
+                {
+                    title: 'Trello clone',
+                    status: 'In-Progress',
+                    subList: []
+                },
+                {
+                    title: 'Trello clone',
+                    status: 'In-Progress',
+                    subList: []
+                }
+            ]
+        },
+        {
+            title: 'Done',
+            todos: []
+        },
+        {
+            title: 'On-Hold',
+            todos: []
+        }
+    ]
+)
+
 export const nodeStore2 = writable(
     [
         {
