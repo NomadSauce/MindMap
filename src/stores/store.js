@@ -32,17 +32,23 @@ export const trelloStore = writable(
             todos: [
                 {
                     title: 'Trello clone',
-                    status: 'Todo',
+                    id: 1,
+                    subList: [
+                        {
+                            title: 'Trello clone',
+                            id: 2,
+                            subList: []
+                        },
+                    ]
+                },
+                {
+                    title: 'Trello clone',
+                    id: 3,
                     subList: []
                 },
                 {
                     title: 'Trello clone',
-                    status: 'Todo',
-                    subList: []
-                },
-                {
-                    title: 'Trello clone',
-                    status: 'Todo',
+                    id: 4,
                     subList: []
                 }
             ]
@@ -52,19 +58,25 @@ export const trelloStore = writable(
             todos: [
                 {
                     title: 'Trello clone',
-                    status: 'In-Progress',
+                    id: 5,
                     subList: []
                 },
                 {
                     title: 'Trello clone',
-                    status: 'In-Progress',
+                    id: 6,
                     subList: []
                 }
             ]
         },
         {
             title: 'Done',
-            todos: []
+            todos: [
+                {
+                    title: 'Trello clone',
+                    id: 7,
+                    subList: []
+                }
+            ]
         },
         {
             title: 'On-Hold',

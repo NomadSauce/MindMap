@@ -5,12 +5,11 @@
 </script>
 
 
-<div class="container border m-0 p-0 col-12 row w-100 d-inline-flex">
+<div class="container-fluid border m-0 p-0 col-12 row w-100 d-inline-flex">
     <h5>Trello-Clone</h5>
     <div class="row">
         {#each data as board}
-            <CardBoard board={board} width={data.length * 100} />
+            <CardBoard board={board} width={data.length * 75} />
         {/each}`
     </div>
-    
 </div>
