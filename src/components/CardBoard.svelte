@@ -1,5 +1,6 @@
 <script>
     import { dndzone } from 'svelte-dnd-action'
+    import { trelloStore } from '../stores/store';
     import { flip } from 'svelte/animate'
     import Card from "./Card.svelte"
 
@@ -21,12 +22,13 @@
 
     function handleSort(e) {
         items = e.detail.items
+        console.log('Details: ', $trelloStore)
     }
 </script>
 
-<div class="col border rounded m-2 p-1 d-flex flex-column">
-    <div class="card row">
-        <div class="card-header bg-dark d-inline-flex justify-content-around">
+<div class="col rounded m-2 p-1 d-flex flex-column">
+    <div class="row">
+        <div class=" bg-dark d-inline-flex justify-content-around">
             <h5>{board.title}</h5>
             <button class="btn btn-secondary btn-sm" on:click={addBtn}>+</button>
         </div>
@@ -34,9 +36,11 @@
     <section use:dndzone={{items, flipDuration}} on:consider={handleSort} on:finalize={handleSort} >
         
         {#each items as item(item.id)}
-            <Card card={item} board={board} />
+            <Card class='' card={item} board={board} />
         {/each}
     </section>
-    
-    
 </div>
+
+<style>
+
+</style>

@@ -7,11 +7,10 @@
 </script>
 
 <div class="m-2 p-0 rounded text-white border">
-    <div class="row text-align-right">
-        <h5>{card.id}</h5>
+    <div class="col text-align-right">
         <input type="text" bind:value={card.title}>
     </div>
-    <div class="row">
+    <div class="col border">
         {#if card.subList} 
             {#each card.subList as sub}
                 <h6>{sub.title}</h6>
@@ -34,7 +33,7 @@
 
 <style>
     input {
-        background: none;
+        background: rgb(80, 80, 80);
         border: none;
         color: deeppink;
         font: 'white';
