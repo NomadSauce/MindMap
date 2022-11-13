@@ -24,7 +24,14 @@
     "d3-hierarchy": "^3.1.2",
     "dotenv": "^16.0.3",
     "mongodb": "^4.11.0",
+    "mysql2": "^2.3.3",
     "sirv-cli": "^2.0.0",
     "svelte-dnd-action": "^0.9.21"
-  }
+  },
+  "description": "My mindmap project written in Sveltejs and D3",
+  "type": "module",
+  "main": "rollup.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
