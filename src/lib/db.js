@@ -51,6 +51,7 @@ export async function getNote(id) {
 }
 
 export async function createNote(name, todo) {
+    console.log('Create Note:::', name, todo)
     let id = Math.floor((Math.random() * 100000) + 1)
     const [result] = await pool.query(`
     INSERT INTO todolist (id, name, todo)
@@ -59,12 +60,6 @@ export async function createNote(name, todo) {
     console.log('createNote', result)
     let noteId = await getNote(result.insertId)
     console.log('Note Result', noteId)
-    // let resval = {
-    //     id: result.insertId,
-    //     name,
-    //     todo
-    // }
-    // console.log(resval)
     return getNote(result.insertId)
 }
 // console.log(createNote('Outside Results', 'test'))
