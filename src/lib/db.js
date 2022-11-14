@@ -1,11 +1,71 @@
+
 import mysql from 'mysql2'
+import { todoStore, nodeStore } from '../stores/store.js'
 
-const pool = mysql.createPool({
-    host: '127.0.0.1',
-    user: 'root',
-    password: '1qaz',
-    database: 'notes_app'
-}).promise()
+// const connection = mysql.createConnection({
+//     host: 'localhost',
+//     user: 'matt',
+//     password: '1234567',
+//     database: 'todos',
+// })
 
-const result = pool.query('SELECT * FROM  notes_app')
-console.log(result)
+// connection.query(
+//     "SELECT * from todolist",
+//     function(err, results, fields) {
+//         console.log('Results: ', results)
+//         // console.log('fields: ', fields)
+//     }
+// )
+
+export const pool = mysql.createPool(
+    {
+        host: 'localhost',
+        user: 'matt',
+        password: '1234567',
+        database: 'todos',
+    }
+).promise()
+
+export async function getNotes() {
+    try {
+        const [rows] = await pool.query('SELECT * from todolist')
+        console.log('getNotes', rows)
+        todoStore.update(todoStore => todoStore = rows)
+        return rows
+
+    } catch (error) {
+        console.log('Err', error)
+    }
+    
+    // console.log('Results: ', rows)
+}
+// getNotes()
+
+export async function getNote(id) {
+    const [rows] = await pool.query(`
+    SELECT * 
+    FROM todolist
+    WHERE id = ?
+    `, [id])
+    return rows[0]
+}
+
+export async function createNote(name, todo) {
+    let id = Math.floor((Math.random() * 100000) + 1)
+    const [result] = await pool.query(`
+    INSERT INTO todolist (id, name, todo)
+    VALUES (?, ?, ?)
+    `, [id, name, todo])
+    console.log('createNote', result)
+    let noteId = await getNote(result.insertId)
+    console.log('Note Result', noteId)
+    // let resval = {
+    //     id: result.insertId,
+    //     name,
+    //     todo
+    // }
+    // console.log(resval)
+    return getNote(result.insertId)
+}
+// console.log(createNote('Outside Results', 'test'))
+
