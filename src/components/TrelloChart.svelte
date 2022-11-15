@@ -14,6 +14,7 @@
     })
 
 
+
     let todoVal = 'Todo'
 
     async function sendForm(data) {
@@ -36,11 +37,21 @@
     }
     
 
+
     async function updateDB() {
-        
+        let result = await fetch('http://localhost:8181/todos')
         const todos = await result.json()
         console.log('Store: ', todos)
         $todoStore = todos
+    }
+
+    async function delTodo(todo) {
+        console.log('Delete Todo:', todo)
+        let id = todo.id
+        let res = await fetch('http://localhost:8181/del/' + id, {
+            method: 'DELETE',
+        })
+        return res
     }
 </script>
 
@@ -62,14 +73,15 @@
     </div>
 
     
-    <div class='row d-flex-inline'>
+    <div class='col-6'>
         {#if $todoStore.length > 0}
             {#each $todoStore as todo, index }
-                <div class='row p-3 m-3 border'>
+                <div class='row p-3 m-3 border d-flex-inline col-12'>
                     {index}
                     {todo.id}
                     {todo.name}
                     {todo.todo}
+                    <button on:click={delTodo(todo)} class='btn btn-dark btn-sm'>X</button>
                 </div>
             {/each}
         {/if}

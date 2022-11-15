@@ -50,17 +50,23 @@ export async function getNote(id) {
     return rows[0]
 }
 
-export async function createNote(name, todo) {
-    console.log('Create Note:::', name, todo)
+export async function createNote(name) {
+    console.log('Create Note:::', name)
     let id = Math.floor((Math.random() * 100000) + 1)
     const [result] = await pool.query(`
-    INSERT INTO todolist (id, name, todo)
+    INSERT INTO todolist (id, name, category_id)
     VALUES (?, ?, ?)
-    `, [id, name, todo])
+    `, [id, name, 'Todo'])
     console.log('createNote', result)
     let noteId = await getNote(result.insertId)
     console.log('Note Result', noteId)
     return getNote(result.insertId)
+}
+
+export async function deleteNote(todo) {
+    console.log('DB Delete Todo', todo)
+    await pool.query(`
+        DELETE FROM todolist WHERE id = ` + todo).then(() => getNotes())
 }
 // console.log(createNote('Outside Results', 'test'))
 
