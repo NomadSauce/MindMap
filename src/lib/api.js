@@ -22,6 +22,10 @@ app.post('/todos', async (req, res) => {
     res.status(201).send(note)
 })
 
+// app.get('/update/:id', async (req, res) => {
+//     console.log('Update (API)', req.params.id)
+// })
+
 app.delete('/del/:id', async (req, res) => {
     console.log('Delete Todo: (API)', req.params.id)
     deleteNote(req.params.id)

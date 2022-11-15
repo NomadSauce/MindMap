@@ -75,6 +75,7 @@
                 <input bind:value={todoVal} type="text" placeholder={todoVal}>
             </div>
             <div class=''>
+                
                 <div class="dropdown">
                     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {todoCategory}
@@ -100,27 +101,25 @@
         <section class="row d-inline-flex">
             <div class='col-3 border'>
                 <h4>ToDo {doList.length}</h4>
-                {#each doList as todo }
+                <CardBoard board={doList} />
+                <!-- {#each doList as todo }
                     <Card card={todo} />
-                {/each}
+                {/each} -->
             </div>
             <div class='col-3 border'>
                 <h4>In-Progress {ipList.length}</h4>
-                {#each ipList as ip }
-                    <Card card={ip} />
-                {/each}
+                <CardBoard board={ipList} />
+
             </div>
             <div class='col-3 border'>
                 <h4>Done {doneList.length}</h4>
-                {#each doneList as done }
-                    <Card card={done} />
-                {/each}
+                <CardBoard board={doneList} />
+
             </div>
             <div class='col-3 border'>
                 <h4>On-Hold {holdList.length}</h4>
-                {#each holdList as hold }
-                    <Card card={hold} />
-                {/each}
+                <CardBoard board={holdList} />
+
             </div>
             <!-- {#each data as board}
             <div class="card col">

@@ -5,9 +5,8 @@
     import Card from "./Card.svelte"
 
     export let board
-    export let width
 
-    $: items = board.todos
+    $: items = board
     const flipDuration = 200
 
     function addBtn() {
@@ -22,18 +21,25 @@
 
     function handleSort(e) {
         items = e.detail.items
-        console.log('Details: ', $trelloStore)
+        console.log('Details: ', e.detail.items)
+    }
+    async function handleFinal(e) {
+        console.log('Finalize', e.detail.items[0].category_id)
+        console.log('Finalize2', e.detail.items[e.detail.items.length -1].category_id)
+        let destination  = e.detail.items[e.detail.items.length -1].category_id
+        console.log('Destination', destination)
+        let update = await fetch('http://localhost:8181/update/' + destination)
+        // console.log(update)
     }
 </script>
 
 <div class="col rounded m-2 p-1 d-flex flex-column">
     <div class="row">
         <div class=" bg-dark d-inline-flex justify-content-around">
-            <h5>{board.title}</h5>
             <button class="btn btn-secondary btn-sm" on:click={addBtn}>+</button>
         </div>
     </div>
-    <section use:dndzone={{items, flipDuration}} on:consider={handleSort} on:finalize={handleSort} >
+    <section use:dndzone={{items, flipDuration}} on:consider={handleSort} on:finalize={handleFinal} >
         
         {#each items as item(item.id)}
             <Card class='' card={item} board={board} />
