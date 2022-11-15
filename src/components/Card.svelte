@@ -7,15 +7,14 @@
 </script>
 
 <div class="m-2 p-0 rounded text-white border">
-    <div class="col text-align-right">
-        <input type="text" bind:value={card.title}>
-    </div>
-    <div class="col border">
-        {#if card.subList} 
-            {#each card.subList as sub}
-                <h6>{sub.title}</h6>
-            {/each}
-        {/if}
+    <div class="col text-align-right row">
+        
+        <h5>{card.name}</h5>
+        <h5>{card.category_id}</h5>
+
+        
+
+        <input type="text" bind:value={card.name}>
     </div>
     <!-- <div class="dropdown">
         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

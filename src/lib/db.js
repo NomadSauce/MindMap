@@ -36,8 +36,6 @@ export async function getNotes() {
     } catch (error) {
         console.log('Err', error)
     }
-    
-    // console.log('Results: ', rows)
 }
 // getNotes()
 
@@ -66,7 +64,7 @@ export async function createNote(name) {
 export async function deleteNote(todo) {
     console.log('DB Delete Todo', todo)
     await pool.query(`
-        DELETE FROM todolist WHERE id = ` + todo).then(() => getNotes())
+        DELETE FROM todolist WHERE id = ` + todo).then(() => console.log('Deleted Successfully'))
 }
 // console.log(createNote('Outside Results', 'test'))
 
