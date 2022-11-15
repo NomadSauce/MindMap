@@ -13,8 +13,8 @@
 <div class="col-12 border h-100 row">
     <div class=" p-0 m-0">
         <!-- <DecisionTree data={$nodeStore} /> -->
-        <LinkTree data={$nodeStore} />
         <TrelloChart data={$trelloStore} />
+        <LinkTree data={$nodeStore} />
         <!-- <Graph data={$nodeStore} /> -->
     </div>
 

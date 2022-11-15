@@ -17,8 +17,8 @@ app.get('/todos', async (req, res) => {
 
 app.post('/todos', async (req, res) => {
     console.log('From API: POST:::', req.body)
-    const { name } = req.body
-    const note = await createNote(name)
+    const { name, category_id } = req.body
+    const note = await createNote(name, category_id)
     res.status(201).send(note)
 })
 

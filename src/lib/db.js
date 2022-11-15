@@ -48,13 +48,13 @@ export async function getNote(id) {
     return rows[0]
 }
 
-export async function createNote(name) {
-    console.log('Create Note:::', name)
+export async function createNote(name, cat) {
+    console.log('Create Note:::', name, cat)
     let id = Math.floor((Math.random() * 100000) + 1)
     const [result] = await pool.query(`
     INSERT INTO todolist (id, name, category_id)
     VALUES (?, ?, ?)
-    `, [id, name, 'Todo'])
+    `, [id, name, cat])
     console.log('createNote', result)
     let noteId = await getNote(result.insertId)
     console.log('Note Result', noteId)

@@ -4,6 +4,15 @@
     export let board
 
     let titleVal = card.title
+
+    async function delTodo(todo) {
+        console.log('Delete Todo:', todo)
+        let id = todo.id
+        let res = await fetch('http://localhost:8181/del/' + id, {
+            method: 'DELETE',
+        })
+        return res
+    }
 </script>
 
 <div class="m-2 p-0 rounded text-white border">
@@ -11,6 +20,8 @@
         
         <h5>{card.name}</h5>
         <h5>{card.category_id}</h5>
+        <button on:click={delTodo(card)} class='btn btn-dark btn-sm'>X</button>
+
 
         
 
