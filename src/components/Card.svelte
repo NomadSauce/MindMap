@@ -5,6 +5,9 @@
 
     let titleVal = card.title
 
+    let categories = ['Todo', 'In-Progress', 'Done', 'Hold']
+
+
     async function delTodo(todo) {
         console.log('Delete Todo:', todo)
         let id = todo.id
@@ -13,20 +16,37 @@
         })
         return res
     }
+
+    function moveTodo(direction) {
+        console.log('Move Direction', direction)
+    }
+
+    function moveLeft() {
+
+    }
 </script>
 
 <div class="m-2 p-0 rounded text-white">
     <div class="col text-align-right row">
         <div class='col todo d-flex justify-content-between'>
-            <button class='btn btn-dark btn-sm'>&larr;</button>
+            <!-- <button on:click={moveTodo('left')} class='btn btn-dark btn-sm'>&larr;</button> -->
             <h3 class=''>{card.name}</h3>
+            <!-- <h4>{JSON.stringify(card)}</h4> -->
+            <!-- <h4>{JSON.stringify(board)}</h4> -->
             <button on:click={delTodo(card)} class='btn btn-dark btn-sm'>X</button>
-            <button class='btn btn-dark btn-sm'>&rarr;</button>
-
+            <!-- <button on:click={moveTodo('right')} class='btn btn-dark btn-sm'>&rarr;</button> -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {card.category_id}
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    {#each categories as category}
+                        <button on:click={() => todoCategory = category} >{category}</button>
+                    {/each}
+                </div>
+            </div>
         </div>
     </div>
-    
-
 </div>
 
 <style>

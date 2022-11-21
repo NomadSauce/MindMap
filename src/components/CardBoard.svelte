@@ -24,11 +24,11 @@
         console.log('Details: ', e.detail.items)
     }
     async function handleFinal(e) {
-        console.log('Finalize', e.detail.items[0].category_id)
-        console.log('Finalize2', e.detail.items[e.detail.items.length -1].category_id)
+        console.log('Original', e.detail.items[0].category_id)
+        // console.log('Finalize2', e.detail.items[e.detail.items.length -1].category_id)
         let destination  = e.detail.items[e.detail.items.length -1].category_id
         console.log('Destination', destination)
-        let update = await fetch('http://localhost:8181/update/' + destination)
+        // let update = await fetch('http://localhost:8181/update/' + destination)
         // console.log(update)
     }
 </script>
